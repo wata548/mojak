@@ -1,0 +1,49 @@
+[
+    {
+        "speaker": "단소 할아버지",
+        "communication" : [
+
+            {
+                "situation": "firstCommunication",
+
+                "script" : [
+                    "안녕하세요"
+                ]
+
+            },
+
+            {
+                "situation": "WrongAnswer",
+                "script" : [
+                    "Fuck You"
+                ]
+            }
+                
+        ]
+
+    },
+
+    {
+        "speaker": "부자 아줌마",
+        "communication" : [
+
+            {
+                "situation": "firstCommunication",
+
+                "script" : [
+                    "hello"
+                ]
+
+            },
+
+            {
+                "situation": "WrongAnswer",
+                "script" : [
+                    "Fuck You!"
+                ]
+            }
+                
+        ]
+
+    }
+]
