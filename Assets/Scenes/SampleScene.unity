@@ -274,7 +274,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &154948400
 RectTransform:
   m_ObjectHideFlags: 0
@@ -551,7 +551,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 154948403}
         m_TargetAssemblyTypeName: ControleCalculator, Assembly-CSharp
-        m_MethodName: Submit
+        m_MethodName: SubmitNumber
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -843,7 +843,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &555098505
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1797,7 +1797,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1236941677
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2167,6 +2167,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1652356568}
   - component: {fileID: 1652356570}
+  - component: {fileID: 1652356571}
   - component: {fileID: 1652356569}
   m_Layer: 5
   m_Name: Communication
@@ -2233,6 +2234,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652356567}
   m_CullTransparentMesh: 1
+--- !u!114 &1652356571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652356567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eb4eaf9d9df6b247966725011ce5af1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  communicationData: {fileID: 148629004}
 --- !u!1 &1881178286
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,33 +4,42 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class ReadInteractionData {
+public class ReadCommunicationData {
 
     [Serializable]
-    public class Script {
-        public string      situation;
-        public string[]    script;
+    public class Scripts {
+
+        public int      actor;
+        public string   scirpt;
     }
 
     [Serializable]
-    public class SpeakerAndScript {
+    public class Communications {
+
+        public string       situation;
+        public string[]     actors;
+        public Scripts[]    scripts;
+    }
+
+    [Serializable]
+    public class TargetAndDialogs {
         
-        public string   speaker= "\0";
-        public Script[] communication;
+        public string           speaker = "\0";
+        public Communications[] communications;
     }
 
     [Serializable]
-    public class CommunicationDatas {
+    public class Dialogs {
 
-        public SpeakerAndScript[] communications;
+        public TargetAndDialogs[] dialogs;
     }
 
-    public static CommunicationDatas communicationDatas;
+    public static Dialogs datas;
 
-    static void SetUp() {
+    public static void SetUp() {
 
         TextAsset jsonFile = Resources.Load<TextAsset>("communications");
-        communicationDatas = JsonUtility.FromJson<CommunicationDatas>("{\"communications\":" + jsonFile.text + "}");
+        datas = JsonUtility.FromJson<Dialogs>("{\"communications\":" + jsonFile.text + "}");
     }
 }
 

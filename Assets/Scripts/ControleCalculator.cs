@@ -17,9 +17,9 @@ public class ControleCalculator : MonoBehaviour
     [SerializeField] float      verticalInterval    = 60;
 
     private  bool    active         = false;
-    readonly long    maximumRange   = 1000000000000000;
-    readonly KeyCode ERASE_KEY      = KeyCode.Backspace;
-    readonly KeyCode SUBMIT_KEY     = KeyCode.Return;
+    const long    maximumRange   = 1000000000;
+    const KeyCode ERASE_KEY      = KeyCode.Backspace;
+    const KeyCode SUBMIT_KEY     = KeyCode.Return;
 
     public long number = 0;
 

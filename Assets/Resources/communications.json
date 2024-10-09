@@ -1,22 +1,32 @@
 [
     {
-        "speaker": "Îã®ÏÜå Ìï†ÏïÑÎ≤ÑÏßÄ",
-        "communication" : [
+        "speaker": "¥‹º“ «“æ∆πˆ¡ˆ",
+        "communications" : [
 
             {
                 "situation": "firstCommunication",
-
-                "script" : [
-                    "ÏïàÎÖïÌïòÏÑ∏Ïöî"
+                "actors" : ["¥‹º“ «“æ∆πˆ¡ˆ", "¡÷¿Œ∞¯"],
+                "scripts" : [
+                    {"actor": 0, "script":"æ»≥Á«œººø‰?"},
+                    {"actor": 1, "script":"æ»≥Á«œººø‰!"},
+                    {"actor": 0, "script":"1"},
+                    {"actor": 1, "script":"2"}
+                    
                 ]
 
             },
 
             {
-                "situation": "WrongAnswer",
-                "script" : [
-                    "Fuck You"
+                "situation": "wrongAnswer",
+                "actors" : ["¥‹º“ «“æ∆πˆ¡ˆ", "¡÷¿Œ∞¯"],
+                "scripts" : [
+                    {"actor": 0, "script":"æ»≥Á«œººø‰?"},
+                    {"actor": 1, "script":"æ»≥Á«œººø‰!"},
+                    {"actor": 0, "script":"1"},
+                    {"actor": 1, "script":"2"}
+                    
                 ]
+
             }
                 
         ]
@@ -24,23 +34,33 @@
     },
 
     {
-        "speaker": "Î∂ÄÏûê ÏïÑÏ§åÎßà",
-        "communication" : [
+        "speaker": "∫Œ¿⁄ æ∆¡‹∏∂",
+        "communications" : [
 
             {
                 "situation": "firstCommunication",
-
-                "script" : [
-                    "hello"
+                "actors" : ["∫Œ¿⁄ æ∆¡‹∏∂", "¡÷¿Œ∞¯", "¥‹º“ «“æ∆πˆ¡ˆ"],
+                "scripts" : [
+                    {"actor": 0, "script":"æ»≥Á«œººø‰?"},
+                    {"actor": 1, "script":"æ»≥Á«œººø‰!"},
+                    {"actor": 2, "script":"1"},
+                    {"actor": 1, "script":"2"}
+                    
                 ]
 
             },
 
             {
-                "situation": "WrongAnswer",
-                "script" : [
-                    "Fuck You!"
+                "situation": "wrongAnswer",
+                "actors" : ["∫Œ¿⁄ æ∆¡‹∏∂", "¡÷¿Œ∞¯", "¥‹º“ «“æ∆πˆ¡ˆ"],
+                "scripts" : [
+                    {"actor": 0, "script":"æ»≥Á«œººø‰?"},
+                    {"actor": 1, "script":"æ»≥Á«œººø‰!"},
+                    {"actor": 2, "script":"1"},
+                    {"actor": 1, "script":"2"}
+                    
                 ]
+
             }
                 
         ]
