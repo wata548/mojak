@@ -24,7 +24,6 @@ public class CustomerProfile : MonoBehaviour {
     public void SetProfile(int nameTag) {
 
         Sprite speakerProfile = ReadPeopleData.Instance.peopleDatas[actors[nameTag]].profile;
-        Debug.Log(speakerProfile);
         profile.sprite = speakerProfile;
     }
 
