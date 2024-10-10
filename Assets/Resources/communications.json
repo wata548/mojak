@@ -1,14 +1,14 @@
 [
     {
-        "speaker": "´Ü¼Ò ÇÒ¾Æ¹öÁö",
+        "speaker": "ë‹¨ì†Œ í• ì•„ë²„ì§€",
         "communications" : [
 
             {
                 "situation": "firstCommunication",
-                "actors" : ["´Ü¼Ò ÇÒ¾Æ¹öÁö", "ÁÖÀÎ°ø"],
+                "actors" : ["ë‹¨ì†Œ í• ì•„ë²„ì§€", "ì£¼ì¸ê³µ"],
                 "scripts" : [
-                    {"actor": 0, "script":"¾È³çÇÏ¼¼¿ä?"},
-                    {"actor": 1, "script":"¾È³çÇÏ¼¼¿ä!"},
+                    {"actor": 0, "script":"ì•ˆë…•í•˜ì„¸ìš”?"},
+                    {"actor": 1, "script":"ì•ˆë…•í•˜ì„¸ìš”!"},
                     {"actor": 0, "script":"1"},
                     {"actor": 1, "script":"2"}
                     
@@ -18,10 +18,10 @@
 
             {
                 "situation": "wrongAnswer",
-                "actors" : ["´Ü¼Ò ÇÒ¾Æ¹öÁö", "ÁÖÀÎ°ø"],
+                "actors" : ["ë‹¨ì†Œ í• ì•„ë²„ì§€", "ì£¼ì¸ê³µ"],
                 "scripts" : [
-                    {"actor": 0, "script":"¾È³çÇÏ¼¼¿ä?"},
-                    {"actor": 1, "script":"¾È³çÇÏ¼¼¿ä!"},
+                    {"actor": 0, "script":"ì•ˆë…•í•˜ì„¸ìš”?"},
+                    {"actor": 1, "script":"ì•ˆë…•í•˜ì„¸ìš”!"},
                     {"actor": 0, "script":"1"},
                     {"actor": 1, "script":"2"}
                     
@@ -34,15 +34,15 @@
     },
 
     {
-        "speaker": "ºÎÀÚ ¾ÆÁÜ¸¶",
+        "speaker": "ë¶€ì ì•„ì¤Œë§ˆ",
         "communications" : [
 
             {
                 "situation": "firstCommunication",
-                "actors" : ["ºÎÀÚ ¾ÆÁÜ¸¶", "ÁÖÀÎ°ø", "´Ü¼Ò ÇÒ¾Æ¹öÁö"],
+                "actors" : ["ë¶€ì ì•„ì¤Œë§ˆ", "ì£¼ì¸ê³µ", "ë‹¨ì†Œ í• ì•„ë²„ì§€"],
                 "scripts" : [
-                    {"actor": 0, "script":"¾È³çÇÏ¼¼¿ä?"},
-                    {"actor": 1, "script":"¾È³çÇÏ¼¼¿ä!"},
+                    {"actor": 0, "script":"ì•ˆë…•í•˜ì„¸ìš”?"},
+                    {"actor": 1, "script":"ì•ˆë…•í•˜ì„¸ìš”!"},
                     {"actor": 2, "script":"1"},
                     {"actor": 1, "script":"2"}
                     
@@ -52,10 +52,10 @@
 
             {
                 "situation": "wrongAnswer",
-                "actors" : ["ºÎÀÚ ¾ÆÁÜ¸¶", "ÁÖÀÎ°ø", "´Ü¼Ò ÇÒ¾Æ¹öÁö"],
+                "actors" : ["ë¶€ì ì•„ì¤Œë§ˆ", "ì£¼ì¸ê³µ", "ë‹¨ì†Œ í• ì•„ë²„ì§€"],
                 "scripts" : [
-                    {"actor": 0, "script":"¾È³çÇÏ¼¼¿ä?"},
-                    {"actor": 1, "script":"¾È³çÇÏ¼¼¿ä!"},
+                    {"actor": 0, "script":"ì•ˆë…•í•˜ì„¸ìš”?"},
+                    {"actor": 1, "script":"ì•ˆë…•í•˜ì„¸ìš”!"},
                     {"actor": 2, "script":"1"},
                     {"actor": 1, "script":"2"}
                     

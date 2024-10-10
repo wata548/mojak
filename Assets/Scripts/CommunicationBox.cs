@@ -8,6 +8,8 @@ public class CommunicationBox : MonoBehaviour
     [SerializeField] TMP_Text communicationData;
 
     const int ALREADY_READ = -1;
+    bool printing = false;
+    float printingInterval = 0.1f;
 
     int currentIndex = ALREADY_READ;
     ReadCommunicationData.Scripts[] scripts;
@@ -20,7 +22,8 @@ public class CommunicationBox : MonoBehaviour
 
     public void ShowCommunication() {
 
-        StartCoroutine(ShowScript(0.1f, scripts[currentIndex].scirpt));
+        printing = true;
+        StartCoroutine(ShowScript(printingInterval, scripts[currentIndex].script));
 
 
         IEnumerator ShowScript(float intervalTime, string singleScript, int index = 0) {
@@ -39,9 +42,19 @@ public class CommunicationBox : MonoBehaviour
 
             index++;
 
-            if(index < singleScript.Length) {
+            if(!printing) {
+
+                communicationData.SetText(singleScript);
+            }
+
+            else if (index < singleScript.Length) {
 
                 StartCoroutine(ShowScript(intervalTime, singleScript, index));
+            }
+
+            else {
+
+                printing = false;
             }
         }
     }
@@ -53,5 +66,13 @@ public class CommunicationBox : MonoBehaviour
 
         GetData(scripts);
         ShowCommunication();
+    }
+
+    private void Update() {
+        
+        if(Input.GetKeyDown(KeyCode.Space) && printing) {
+
+            printing = false;
+        }
     }
 }

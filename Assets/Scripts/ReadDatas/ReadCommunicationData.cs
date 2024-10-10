@@ -10,7 +10,7 @@ public class ReadCommunicationData {
     public class Scripts {
 
         public int      actor;
-        public string   scirpt;
+        public string   script;
     }
 
     [Serializable]
@@ -34,12 +34,12 @@ public class ReadCommunicationData {
         public TargetAndDialogs[] dialogs;
     }
 
-    public static Dialogs datas;
+    public static Dialogs datas = null;
 
     public static void SetUp() {
 
         TextAsset jsonFile = Resources.Load<TextAsset>("communications");
-        datas = JsonUtility.FromJson<Dialogs>("{\"communications\":" + jsonFile.text + "}");
+        datas = JsonUtility.FromJson<Dialogs>("{\"dialogs\":" + jsonFile.text + "}");
     }
 }
 
