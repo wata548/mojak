@@ -13,19 +13,19 @@ public class ControleCalculator : MonoBehaviour
     [SerializeField] GameObject calculateKeyPrefab;
     [SerializeField] GameObject keyFolder;
     [SerializeField] TMP_Text   ShowNumber;
-    [SerializeField] float      horizonInterval     = 50;
-    [SerializeField] float      verticalInterval    = 60;
 
-    private  bool    active         = false;
-    const long    maximumRange   = 1000000000;
-    const KeyCode ERASE_KEY      = KeyCode.Backspace;
-    const KeyCode SUBMIT_KEY     = KeyCode.Return;
+    private const float   horizonInterval   = 50;
+    private const float   verticalInterval  = 60;
+    private const long    maximumRange      = 1000000000;
+    private const KeyCode ERASE_KEY         = KeyCode.Backspace;
+    private const KeyCode SUBMIT_KEY        = KeyCode.Return;
 
-    public long number = 0;
+    private long number = 0;
+    private bool active = false;
+
+    public ControleCalculator Instance { get; private set; }
 
 //=======================================================================| Method
-
-    public ControleCalculator instance { get; private set; }
 
     private void SetUpCalculatorKeys() {
 
@@ -62,9 +62,10 @@ public class ControleCalculator : MonoBehaviour
 
     }
 
+
     public void ClickButton(int userInput) {
 
-        bool outRange = number > maximumRange;
+        bool outRange = number >= maximumRange;
 
         if (!active || outRange) {
 
@@ -107,6 +108,29 @@ public class ControleCalculator : MonoBehaviour
         ShowNumber.SetText(number.ToString());
     }
 
+    private void ClickKeyboard() {
+
+        for (char i = '0'; i <= '9'; i++) {
+
+            if (Input.GetKeyDown((KeyCode)i)) {
+
+                ClickButton(i - '0');
+                ;
+            }
+        }
+
+        if (Input.GetKeyDown(ERASE_KEY)) {
+
+            EraseOneNumber();
+        }
+
+        if (Input.GetKeyDown(SUBMIT_KEY)) {
+
+            SubmitNumber();
+        }
+    }
+
+
     private void TurnOff() {
 
         active = false;
@@ -119,37 +143,26 @@ public class ControleCalculator : MonoBehaviour
         palete.SetActive(true);
     }
 
-    //==========================================================================| Logic
+
+    private void SetSingletone() {
+
+        if (Instance == null) {
+
+            Instance = this;
+        }
+    }
+
+//==========================================================================| Logic
 
     private void Awake() {
 
-        if(instance == null) {
-
-            instance = this;
-        }
+        SetSingletone();
 
         SetUpCalculatorKeys();
     }
 
     private void Update() {
 
-        for(char i = '0'; i <= '9'; i++) {
-
-            if (Input.GetKeyDown((KeyCode)i)) {
-
-                ClickButton(i - '0');
-                ;
-            }
-        }
-
-        if(Input.GetKeyDown(ERASE_KEY)) {
-
-            EraseOneNumber();
-        }
-
-        if(Input.GetKeyDown(SUBMIT_KEY)) {
-
-            SubmitNumber();
-        }
+        ClickKeyboard();
     }
 }

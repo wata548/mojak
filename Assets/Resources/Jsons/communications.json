@@ -1,6 +1,6 @@
 [
     {
-        "speaker": "단소 할아버지",
+        "speaker": "a",
         "communications" : [
 
             {
@@ -9,8 +9,8 @@
                 "scripts" : [
                     {"actor": 0, "script":"안녕하세요?"},
                     {"actor": 1, "script":"안녕하세요!"},
-                    {"actor": 0, "script":"1"},
-                    {"actor": 1, "script":"2"}
+                    {"actor": 0, "script":"동해물과 백두산이 마르고 닳도록\n하느님이 보우하사 우리나라 만세"},
+                    {"actor": 1, "script":"무궁화 삼천리 화려강산\n대한사람 대한으로 우리나라 만세"}
                     
                 ]
 
@@ -20,10 +20,10 @@
                 "situation": "wrongAnswer",
                 "actors" : ["단소 할아버지", "주인공"],
                 "scripts" : [
-                    {"actor": 0, "script":"안녕하세요?"},
-                    {"actor": 1, "script":"안녕하세요!"},
-                    {"actor": 0, "script":"1"},
-                    {"actor": 1, "script":"2"}
+                    {"actor": 0, "script":"안녕하345세요?"},
+                    {"actor": 1, "script":"안녕하234세요!"},
+                    {"actor": 0, "script":"241"},
+                    {"actor": 1, "script":"2342"}
                     
                 ]
 
@@ -34,17 +34,17 @@
     },
 
     {
-        "speaker": "부자 아줌마",
+        "speaker": "b",
         "communications" : [
 
             {
                 "situation": "firstCommunication",
                 "actors" : ["부자 아줌마", "주인공", "단소 할아버지"],
                 "scripts" : [
-                    {"actor": 0, "script":"안녕하세요?"},
-                    {"actor": 1, "script":"안녕하세요!"},
-                    {"actor": 2, "script":"1"},
-                    {"actor": 1, "script":"2"}
+                    {"actor": 0, "script":"안녕324하세요?"},
+                    {"actor": 1, "script":"안녕하세4요!"},
+                    {"actor": 2, "script":"13"},
+                    {"actor": 1, "script":"3"}
                     
                 ]
 
@@ -54,10 +54,10 @@
                 "situation": "wrongAnswer",
                 "actors" : ["부자 아줌마", "주인공", "단소 할아버지"],
                 "scripts" : [
-                    {"actor": 0, "script":"안녕하세요?"},
-                    {"actor": 1, "script":"안녕하세요!"},
-                    {"actor": 2, "script":"1"},
-                    {"actor": 1, "script":"2"}
+                    {"actor": 0, "script":"!녕하세요?"},
+                    {"actor": 1, "script":"안녕하세!요!"},
+                    {"actor": 2, "script":"1!"},
+                    {"actor": 1, "script":"2!"}
                     
                 ]
 

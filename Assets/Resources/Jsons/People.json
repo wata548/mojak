@@ -1,18 +1,29 @@
 [
+    {
+        "name": "주인공",
+        "profile": "Profiles/Player.png",
+        "age" : 0,
+        "appearence" : [   
+        ],
+        "trait" : "편의점에서 일을 한다." 
+
+    },
 
     {
         "name": "단소 할아버지",
+        "profile": "Profiles/DanSo.png",
         "age" : 65,
         "appearence" : [
             "모자", 
             "단소"    
         ],
-        "trait" : "단소를 이용해 사람을 괴롭횐다." 
+        "trait" : "단소를 이용해 사람을 괴롭힌다." 
 
     },
 
     {
         "name": "부자 아줌마",
+        "profile": "Profiles/Ms_Rich.png",
         "age" : 47,
         "appearence" : [
             "호피무늬 옷"    
