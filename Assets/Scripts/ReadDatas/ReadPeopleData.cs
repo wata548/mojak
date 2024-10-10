@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ReadPeopleData : MonoBehaviour{
+public class ReadPeopleData : MonoBehaviour {
 
 //=================================================================| Field
 
@@ -27,7 +27,7 @@ public class ReadPeopleData : MonoBehaviour{
 
     public class Person {
 
-        public Image profile;
+        public Sprite profile;
         public int age;
         public string[] appearence;
         public string trait;
@@ -35,22 +35,25 @@ public class ReadPeopleData : MonoBehaviour{
 
     private PersonArray people;
     public class PeopleDatas : Dictionary<String, Person> { }
-    PeopleDatas peopleDatas = new();
+    public PeopleDatas peopleDatas = new();
+
+    public static ReadPeopleData Instance { get; private set; } = null;
 
 //=================================================================| Method
 
-    void AnalysisJson() {
+    private void AnalysisJson() {
 
         TextAsset jsonFile = Resources.Load<TextAsset>("Jsons/people");
-        people = JsonUtility.FromJson<PersonArray>("{\"people\":" + jsonFile.text + "}");
+        people = JsonUtility.FromJson<PersonArray>("{\"person\":" + jsonFile.text + "}");
     }
 
-    void TransToDictionary() {
+    private void TransToDictionary() {
 
-        Person temp = new();
         foreach (PersonData personData in people.person) {
 
-            temp.profile = Resources.Load<Image>(personData.profile);
+            Person temp = new();
+
+            temp.profile = Resources.Load<Sprite>(personData.profile);
             temp.age = personData.age;
             temp.appearence = personData.appearence;
             temp.trait = personData.trait;
@@ -59,16 +62,25 @@ public class ReadPeopleData : MonoBehaviour{
         }
     }
 
-    public void Analysis() {
+    public  void Analysis() {
 
         AnalysisJson();
 
         TransToDictionary();
     }
 
+    private void SetSingleTone() {
+
+        if(Instance == null) {
+            Instance = this;
+        }
+    }
+
 //=================================================================| Logic
 
     private void Awake() {
+
+        SetSingleTone();
         Analysis();
     }
 }

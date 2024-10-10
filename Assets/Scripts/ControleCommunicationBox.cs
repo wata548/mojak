@@ -40,6 +40,7 @@ public class ControleCommunicationBox : MonoBehaviour
         }
 
         printing = true;
+        CustomerProfile.Instance.SetProfile(scripts[currentIndex].actor);
         StartCoroutine(ShowScript(PRINTING_INTERVAL, scripts[currentIndex].script));
         currentIndex++;
 

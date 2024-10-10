@@ -1,7 +1,7 @@
 [
     {
         "name": "주인공",
-        "profile": "Profiles/Player.png",
+        "profile": "Profiles/Player",
         "age" : 0,
         "appearence" : [   
         ],
@@ -11,7 +11,7 @@
 
     {
         "name": "단소 할아버지",
-        "profile": "Profiles/DanSo.png",
+        "profile": "Profiles/DanSo",
         "age" : 65,
         "appearence" : [
             "모자", 
@@ -23,7 +23,7 @@
 
     {
         "name": "부자 아줌마",
-        "profile": "Profiles/Ms_Rich.png",
+        "profile": "Profiles/Ms_Rich",
         "age" : 47,
         "appearence" : [
             "호피무늬 옷"    
