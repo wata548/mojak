@@ -1,0 +1,19 @@
+[
+    {
+        "item": "물",
+        "price": 500,
+        "image": "Items/water"
+    },
+
+    {
+        "item": "단소",
+        "price": 3500,
+        "image": "Items/DanSo"
+    },
+
+    {
+        "item": "삼각 김밥",
+        "price": 1700,
+        "image": "Items/triangleRice"
+    }
+]
