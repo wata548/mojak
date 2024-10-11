@@ -8,20 +8,20 @@ public class CommunicationBox : MonoBehaviour
 {
 //=====================================================================================| field
 
-    private static ReadCommunicationData.Scripts[] scripts;
+    private ReadCommunicationData.Scripts[] scripts;
 
     public static CommunicationBox Instance { get; private set; } = null;
 
-    private static bool printing = false;
+    public bool Printing { get; private set; } = false;
 //=====================================================================================| method
 
-    public void ShowCommunication(TMP_Text dialogBox, float intervalTime, string script, int index = 0) {
+    public void ShowCommunication(TMP_Text scriptBox, float intervalTime, string script, int index = 0) {
 
-        printing = true;
-        StartCoroutine(ShowScript(dialogBox, intervalTime, script, index));
+        Printing = true;
+        StartCoroutine(ShowScript(scriptBox, intervalTime, script, index));
     }
 
-    private IEnumerator ShowScript(TMP_Text dialogBox, float intervalTime, string script, int index) {
+    private IEnumerator ShowScript(TMP_Text scriptBox, float intervalTime, string script, int index) {
 
 
         ShowOneChar();
@@ -30,8 +30,8 @@ public class CommunicationBox : MonoBehaviour
 
         index++;
 
-        if (!printing) {
-            dialogBox.SetText(script);
+        if (!Printing) {
+            scriptBox.SetText(script);
         }
 
         else {
@@ -42,12 +42,12 @@ public class CommunicationBox : MonoBehaviour
 
             if (index == 0) {
 
-                dialogBox.SetText(script[index].ToString());
+                scriptBox.SetText(script[index].ToString());
             }
 
             else {
 
-                dialogBox.SetText(dialogBox.text + script[index]);
+                scriptBox.SetText(scriptBox.text + script[index]);
             }
         }
 
@@ -55,20 +55,20 @@ public class CommunicationBox : MonoBehaviour
 
             if (index < script.Length) {
 
-                StartCoroutine(ShowScript(dialogBox, intervalTime, script, index));
+                StartCoroutine(ShowScript(scriptBox, intervalTime, script, index));
             }
             else {
 
-                printing = false;
+                Printing = false;
             }
         }
     }
 
     public bool SkipCommunication() {
 
-        if (printing) {
+        if (Printing) {
 
-            printing = false;
+            Printing = false;
             return true;
         }
 

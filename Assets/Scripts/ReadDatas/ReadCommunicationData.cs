@@ -105,7 +105,7 @@ public class ReadCommunicationData: MonoBehaviour {
         yield return new WaitForSeconds(0.1f);
 
         ReadCommunicationData.Communication data = allDatas["단소 할아버지"]["firstCommunication"];
-        ControleCommunicationSystem.Instance.SetDialogData(data);
+        ControleCommunicationSystem.Instance.SetDialog(data);
         ControleCommunicationSystem.Instance.StartCommunication();
     }
 
