@@ -104,11 +104,9 @@ public class ReadCommunicationData: MonoBehaviour {
 
         yield return new WaitForSeconds(0.1f);
 
-        Scripts[] a = allDatas["a"]["firstCommunication"].scripts;
-        string[] b = allDatas["a"]["firstCommunication"].actors;
-        CustomerProfile.Instance.GetActors(b);
-        ControleCommunicationBox.Instance.GetData(a);
-        ControleCommunicationBox.Instance.ShowCommunication();
+        ReadCommunicationData.Communication data = allDatas["단소 할아버지"]["firstCommunication"];
+        ControleCommunicationSystem.Instance.SetDialogData(data);
+        ControleCommunicationSystem.Instance.StartCommunication();
     }
 
     private void Awake() {
