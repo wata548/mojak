@@ -18,7 +18,7 @@ public class ControleCommunicationSystem : MonoBehaviour
     private int     currentIndex                 = ALREADY_READ;
     public bool     Active { get; private set; } = true;
 
-    private List<ReadCommunicationData.Script> scriptData;
+    private ReadCommunicationData.Script[] scriptData;
 
     public static ControleCommunicationSystem Instance { get; private set; } = null;
 
@@ -57,7 +57,7 @@ public class ControleCommunicationSystem : MonoBehaviour
 
         currentIndex++;
 
-        if(currentIndex == scriptData.Count) {
+        if(currentIndex == scriptData.Length) {
             currentIndex = ALREADY_READ;
         }
     }

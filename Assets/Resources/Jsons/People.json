@@ -1,7 +1,11 @@
 [
     {
         "name": "주인공",
-        "profile": "Profiles/Player",
+        "defaultImagePath": "Person/Player/",
+        "profile": "Profile",
+        "image": [
+            "Standing"
+        ],
         "age" : 0,
         "appearence" : [   
         ],
@@ -11,7 +15,11 @@
 
     {
         "name": "단소 할아버지",
-        "profile": "Profiles/DanSo",
+        "defaultImagePath": "Person/DanSo/",
+        "profile": "Profile",
+        "image": [
+            "Standing"
+        ],
         "age" : 65,
         "appearence" : [
             "모자", 
@@ -23,7 +31,11 @@
 
     {
         "name": "부자 아줌마",
-        "profile": "Profiles/Ms_Rich",
+        "defaultImagePath": "Person/Ms_Rich/",
+        "profile": "Profile",
+        "image": [
+            "Standing"
+        ],
         "age" : 47,
         "appearence" : [
             "호피무늬 옷"    

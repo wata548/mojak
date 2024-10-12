@@ -44,9 +44,9 @@ public class ReadCommunicationData : MonoBehaviour {
     public class Communication {
 
         public string[] Actors { get; private set; }
-        public List<Script> Scripts { get; private set; }
+        public Script[] Scripts { get; private set; }
 
-        public Communication(string[] actors, List<Script> scripts) {
+        public Communication(string[] actors, Script[] scripts) {
 
             Actors = actors;
             Scripts = scripts;
@@ -92,18 +92,27 @@ public class ReadCommunicationData : MonoBehaviour {
 
             foreach(var situation in speaker.communications) {
 
-                List<Script> copyScript = new();
-                foreach(var script in situation.scripts) {
-
-                    Script copy = new(script.actor, script.script);
-                    copyScript.Add(copy);
-                }
+                Script[] copyScript = SetMoreSurcurityScript(situation.scripts);
 
                 Communication temp = new(situation.actors, copyScript);
 
 
                 allDatas[speaker.speaker].Add(situation.situation, temp);
             }
+        }
+
+        Script[] SetMoreSurcurityScript(Scripts[] scripts) {
+
+            Script[] copyScript = new Script[scripts.Length];
+            int index = 0;
+
+            foreach (var script in scripts) {
+
+                Script copy = new(script.actor, script.script);
+                copyScript[index++] = copy;
+            }
+
+            return copyScript;
         }
 
     }

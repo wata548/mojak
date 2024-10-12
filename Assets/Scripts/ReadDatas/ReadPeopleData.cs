@@ -13,7 +13,9 @@ public class ReadPeopleData : MonoBehaviour {
     private class PersonData {
 
         public string   name = "\0";
+        public string   defaultImagePath = "\0";
         public string   profile = "\0";
+        public string[] image;
         public int      age = 0;
         public string[] appearence;
         public string   trait = "\0";
@@ -27,28 +29,30 @@ public class ReadPeopleData : MonoBehaviour {
 
     public class Person {
 
-        public Sprite Profile { get; private set; }
-        public int Age { get; private set; }
-        public string[] Appearence { get; private set; }
-        public string Trait { get; private set; }
+        public Sprite   Profile     { get; private set; }
+        public Sprite[] Images      { get; private set; }
+        public int      Age         { get; private set; }
+        public string[] Appearence  { get; private set; }
+        public string   Trait       { get; private set; }
 
-        public Person(Sprite profile, int age, string[] appearence, string trait) {
+        public Person(Sprite profile, Sprite[] image, int age, string[] appearence, string trait) {
 
-            Profile = profile;
-            Age = age;
-            Appearence = appearence;
-            Trait = trait;
+            Profile     = profile;
+            Images      = image;
+            Age         = age;
+            Appearence  = appearence;
+            Trait       = trait;
 
         }
     }
 
-    private PersonArray people;
     public class PeopleDatas : Dictionary<String, Person> { }
     public PeopleDatas peopleDatas = new();
 
     public static ReadPeopleData Instance { get; private set; } = null;
 
 //=================================================================| Method
+    private PersonArray people;
 
     private void AnalysisJson() {
 
@@ -60,15 +64,39 @@ public class ReadPeopleData : MonoBehaviour {
 
         foreach (PersonData personData in people.person) {
 
+            Sprite profile = SetProfile(personData);
 
-            Sprite profile = Resources.Load<Sprite>(personData.profile);
+            Sprite[] images = SetPersonImage(personData);
+
             int age = personData.age;
             string[] appearence = personData.appearence;
             string trait = personData.trait;
 
-            Person temp = new(profile, age, appearence, trait);
+            Person temp = new(profile, images, age, appearence, trait);
 
             peopleDatas.Add(personData.name, temp);
+        }
+
+        Sprite[] SetPersonImage(PersonData personData) {
+
+            Sprite[] images = new Sprite[personData.image.Length];
+            int index = 0;
+
+            foreach (string image in personData.image) {
+
+                string imageRoot = personData.defaultImagePath + image;
+                images[index++] = Resources.Load<Sprite>(imageRoot);
+            }
+
+            return images;
+        }
+
+        Sprite SetProfile(PersonData personData) {
+
+            string root = personData.defaultImagePath + personData.profile;
+            Sprite profile = Resources.Load<Sprite>(root);
+
+            return profile;
         }
     }
 
