@@ -14,5 +14,6 @@ public class SetCustomer
 
     static void Disapper(SpriteRenderer sprite) {
         sprite.sprite = null;
+
     }
 }

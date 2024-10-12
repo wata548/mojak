@@ -165,7 +165,7 @@ public class ControleCalculator : MonoBehaviour
         }
     }
     
-    private void SetSingletone() {
+    private void SetSingleton() {
 
         if (Instance == null) {
 
@@ -177,7 +177,7 @@ public class ControleCalculator : MonoBehaviour
 
     private void Awake() {
 
-        SetSingletone();
+        SetSingleton();
 
         SetUpCalculatorKeys();
 

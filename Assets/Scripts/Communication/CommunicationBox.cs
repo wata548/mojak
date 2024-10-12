@@ -81,7 +81,7 @@ public class CommunicationBox : MonoBehaviour
         }
     }
 
-    private void SetSingletone() {
+    private void SetSingleton() {
 
         if(Instance == null) {
 
@@ -91,6 +91,6 @@ public class CommunicationBox : MonoBehaviour
 
     private void Awake() {
 
-        SetSingletone();
+        SetSingleton();
     }
 }

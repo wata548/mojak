@@ -17,7 +17,7 @@ public class IndicateDay : MonoBehaviour {
         indicateDay.SetText($"{day} Day");
     }
 
-    private void SetSingletone() {
+    private void SetSingleton() {
 
         if(Instance) {
             Instance = this;
@@ -28,7 +28,7 @@ public class IndicateDay : MonoBehaviour {
 
     private void Awake() {
 
-        SetSingletone();
+        SetSingleton();
     }
 
 }

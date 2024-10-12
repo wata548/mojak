@@ -105,7 +105,7 @@ public class ReadPeopleData : MonoBehaviour {
         TransToDictionary();
     }
 
-    private void SetSingleTone() {
+    private void SetSingleton() {
 
         if(Instance == null) {
             Instance = this;
@@ -116,7 +116,7 @@ public class ReadPeopleData : MonoBehaviour {
 
     private void Awake() {
 
-        SetSingleTone();
+        SetSingleton();
         Analysis();
     }
 }

@@ -122,7 +122,7 @@ public class ReadCommunicationData : MonoBehaviour {
         TransToDictionary();
     }
 
-    private void SetSingleTone() {
+    private void SetSingleton() {
 
         if (Instance == null) {
             Instance = this;
@@ -143,11 +143,11 @@ public class ReadCommunicationData : MonoBehaviour {
 
     private void Awake() {
 
-        SetSingleTone();
+        SetSingleton();
         Analysis();
 
         //test code start
-        StartCoroutine(wait());
+        //StartCoroutine(wait());
 
 
     }

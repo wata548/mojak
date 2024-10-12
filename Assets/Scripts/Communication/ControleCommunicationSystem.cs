@@ -25,7 +25,7 @@ public class ControleCommunicationSystem : MonoBehaviour
 //==================================================================| Method
 
 
-    private void SetSingletone() {
+    private void SetSingleton() {
 
         if (Instance == null) {
 
@@ -94,7 +94,7 @@ public class ControleCommunicationSystem : MonoBehaviour
             TurnOff();
         }
 
-        SetSingletone();
+        SetSingleton();
     }
 
     private void Update() {

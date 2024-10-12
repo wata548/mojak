@@ -60,7 +60,7 @@ public class ReadItemsData : MonoBehaviour
         TransDictionary();
     }
 
-    private void SetSingletone() {
+    private void SetSingleton() {
 
         if(Instance == null) {
             Instance = this;
@@ -69,7 +69,7 @@ public class ReadItemsData : MonoBehaviour
        
     private void Awake() {
 
-        SetSingletone();
+        SetSingleton();
         Analysis();
     }
 }

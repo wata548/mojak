@@ -16,7 +16,7 @@ public class MovementSkipButton : MonoBehaviour
 
 //======================================================================================| Method
 
-    private void SetSingletone() {
+    private void SetSingleton() {
 
         if(Instance == null) {
 
@@ -75,7 +75,7 @@ public class MovementSkipButton : MonoBehaviour
     private void Awake() {
 
         defaultPosition = target.transform.position;
-        SetSingletone();
+        SetSingleton();
 
     }
 
