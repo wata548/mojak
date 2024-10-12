@@ -90,14 +90,13 @@ public class ReadCommunicationData : MonoBehaviour {
 
             allDatas.Add(speaker.speaker, new());
 
-            foreach(var situation in speaker.communications) {
+            foreach(var actorAndScripts in speaker.communications) {
 
-                Script[] copyScript = SetMoreSurcurityScript(situation.scripts);
+                Script[] copyScript = SetMoreSurcurityScript(actorAndScripts.scripts);
 
-                Communication temp = new(situation.actors, copyScript);
+                Communication dialog = new(actorAndScripts.actors, copyScript);
 
-
-                allDatas[speaker.speaker].Add(situation.situation, temp);
+                allDatas[speaker.speaker].Add(actorAndScripts.situation, dialog);
             }
         }
 
@@ -147,6 +146,7 @@ public class ReadCommunicationData : MonoBehaviour {
         SetSingleTone();
         Analysis();
 
+        //test code start
         StartCoroutine(wait());
 
 

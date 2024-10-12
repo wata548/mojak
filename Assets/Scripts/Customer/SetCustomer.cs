@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SetCustomer : MonoBehaviour
+public class SetCustomer 
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    
+    static void SetImage(SpriteRenderer sprite, string customer, int state) {
+
+        Sprite  image           = ReadPeopleData.Instance.peopleDatas[customer].Images[state];
+
+        sprite.sprite = image;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    static void Disapper(SpriteRenderer sprite) {
+        sprite.sprite = null;
     }
 }

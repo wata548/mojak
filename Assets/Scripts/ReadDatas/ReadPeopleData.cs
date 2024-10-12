@@ -64,13 +64,11 @@ public class ReadPeopleData : MonoBehaviour {
 
         foreach (PersonData personData in people.person) {
 
-            Sprite profile = SetProfile(personData);
-
-            Sprite[] images = SetPersonImage(personData);
-
-            int age = personData.age;
-            string[] appearence = personData.appearence;
-            string trait = personData.trait;
+            Sprite      profile     = SetProfile(personData);
+            Sprite[]    images      = SetPersonImage(personData);
+            int         age         = personData.age;
+            string[]    appearence  = personData.appearence;
+            string      trait       = personData.trait;
 
             Person temp = new(profile, images, age, appearence, trait);
 

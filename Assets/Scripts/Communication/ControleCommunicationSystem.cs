@@ -16,7 +16,7 @@ public class ControleCommunicationSystem : MonoBehaviour
     private const KeyCode   SKIP_KEY             = KeyCode.Space;
 
     private int     currentIndex                 = ALREADY_READ;
-    public bool     Active { get; private set; } = true;
+    public bool     Active { get; private set; } = false;
 
     private ReadCommunicationData.Script[] scriptData;
 
@@ -49,11 +49,10 @@ public class ControleCommunicationSystem : MonoBehaviour
             return;
         }
 
-        //I don't know is it Good?
         MovementSkipButton.Instance.RestartMovement();
 
         CommunicationBox.Instance.ShowCommunication(scriptIndicate, PRINTING_INTERVAL, scriptData[currentIndex].SingleScript);
-        profile.sprite = CustomerProfile.SetProfile(scriptData[currentIndex].Actor);
+        CustomerProfile.SetProfile(profile, scriptData[currentIndex].Actor);
 
         currentIndex++;
 
@@ -88,12 +87,19 @@ public class ControleCommunicationSystem : MonoBehaviour
 
     private void Awake() {
 
+        if (Active) {
+            TurnOn();
+        }
+        else {
+            TurnOff();
+        }
+
         SetSingletone();
     }
 
     private void Update() {
         
-        if(Input.GetKeyDown(KeyCode.Space)) {
+        if(Active && Input.GetKeyDown(KeyCode.Space)) {
 
             SkipScript();
         }

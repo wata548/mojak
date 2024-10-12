@@ -23,6 +23,9 @@ public class ControleCalculator : MonoBehaviour
     private long number = 0;
     private bool active = false;
 
+    private Vector2 appearPosition = new(650, 225);
+    private Vector2 disappearPosition = new(955, 255);
+
     public ControleCalculator Instance { get; private set; }
 
 //=======================================================================| Method
@@ -40,8 +43,6 @@ public class ControleCalculator : MonoBehaviour
         }
 
         CreateButton(new Vector3(horizonInterval * 1, - verticalInterval * 3), 0);
-
-        TurnOff();
 
         void CreateButton(Vector3 location, int index) {
 
@@ -135,15 +136,35 @@ public class ControleCalculator : MonoBehaviour
 
         active = false;
         palete.SetActive(false);
+
     }
 
     private void TurnOn() {
 
         active = true;
         palete.SetActive(true);
+
     }
 
+    IEnumerator AppearMovement(Vector2 startPosition, float increse = 5) {
 
+        const float UI_TRANSFORM = 2.4f;
+
+        yield return new WaitForSeconds(0.08f);
+
+        startPosition.x -= increse;
+
+        palete.transform.position = startPosition * UI_TRANSFORM;
+        
+        if(startPosition.x > appearPosition.x) {
+            StartCoroutine(AppearMovement(startPosition, increse));
+        }
+
+        else {
+            palete.transform.position = appearPosition * UI_TRANSFORM;
+        }
+    }
+    
     private void SetSingletone() {
 
         if (Instance == null) {
@@ -159,6 +180,11 @@ public class ControleCalculator : MonoBehaviour
         SetSingletone();
 
         SetUpCalculatorKeys();
+
+        TurnOff();
+    }
+
+    private void Start() {
     }
 
     private void Update() {

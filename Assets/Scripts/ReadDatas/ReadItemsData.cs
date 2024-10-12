@@ -66,7 +66,7 @@ public class ReadItemsData : MonoBehaviour
             Instance = this;
         }
     }
-
+       
     private void Awake() {
 
         SetSingletone();

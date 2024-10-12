@@ -8,11 +8,11 @@ public class CustomerProfile {
 
     private static string[] actors;
 
-    public static Sprite SetProfile(int nameTag) {
+    public static void SetProfile(UnityEngine.UI.Image sprite, int nameTag) {
 
         Sprite speakerProfile = ReadPeopleData.Instance.peopleDatas[actors[nameTag]].Profile;
 
-        return speakerProfile;
+        sprite.sprite = speakerProfile;
     }
 
     public static void GetActors(string[] actors) {
