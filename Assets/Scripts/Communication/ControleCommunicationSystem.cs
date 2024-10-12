@@ -18,7 +18,7 @@ public class ControleCommunicationSystem : MonoBehaviour
     private int     currentIndex                 = ALREADY_READ;
     public bool     Active { get; private set; } = true;
 
-    private ReadCommunicationData.Scripts[] scriptData;
+    private List<ReadCommunicationData.Script> scriptData;
 
     public static ControleCommunicationSystem Instance { get; private set; } = null;
 
@@ -35,8 +35,8 @@ public class ControleCommunicationSystem : MonoBehaviour
 
     public void SetDialog(ReadCommunicationData.Communication data) {
 
-        CustomerProfile.GetActors(data.actors);
-        scriptData = data.scripts;
+        CustomerProfile.GetActors(data.Actors);
+        scriptData = data.Scripts;
         currentIndex = 0;
 
         TurnOn();
@@ -49,19 +49,21 @@ public class ControleCommunicationSystem : MonoBehaviour
             return;
         }
 
+        //I don't know is it Good?
         MovementSkipButton.Instance.RestartMovement();
 
-        CommunicationBox.Instance.ShowCommunication(scriptIndicate, PRINTING_INTERVAL, scriptData[currentIndex].script);
-        profile.sprite = CustomerProfile.SetProfile(scriptData[currentIndex].actor);
+        CommunicationBox.Instance.ShowCommunication(scriptIndicate, PRINTING_INTERVAL, scriptData[currentIndex].SingleScript);
+        profile.sprite = CustomerProfile.SetProfile(scriptData[currentIndex].Actor);
 
         currentIndex++;
 
-        if(currentIndex == scriptData.Length) {
+        if(currentIndex == scriptData.Count) {
             currentIndex = ALREADY_READ;
         }
     }
 
     public void SkipScript() {
+
         bool skip = CommunicationBox.Instance.SkipCommunication();
 
         if (!skip) {

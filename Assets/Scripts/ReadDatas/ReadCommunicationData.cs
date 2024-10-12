@@ -5,13 +5,13 @@ using Unity.VisualScripting;
 using UnityEngine;
 using static ReadCommunicationData;
 
-public class ReadCommunicationData: MonoBehaviour {
+public class ReadCommunicationData : MonoBehaviour {
 
     //=================================================================================| field
 
     //Get Json
     [Serializable]
-    public class Scripts {
+    private class Scripts {
 
         public int      actor;
         public string   script;
@@ -38,26 +38,44 @@ public class ReadCommunicationData: MonoBehaviour {
         public TargetAndDialogs[] dialogs;
     }
 
-    private Dialogs datas = null;
 
 
     //Translate Dictionary
     public class Communication {
 
-        public string[] actors;
-        public Scripts[] scripts;
+        public string[] Actors { get; private set; }
+        public List<Script> Scripts { get; private set; }
+
+        public Communication(string[] actors, List<Script> scripts) {
+
+            Actors = actors;
+            Scripts = scripts;
+        }
+    }
+
+    public class Script {
+
+        public int Actor { get; private set; }
+        public string SingleScript { get; private set; }
+
+        public Script(int actor, string singleScript) {
+            Actor = actor;
+            SingleScript = singleScript;
+
+        }
     }
 
     public class SituationData : Dictionary<string, Communication> { }
 
     public class AllDialog : Dictionary<string, SituationData> { }
 
-    public AllDialog allDatas = new();
+    public AllDialog allDatas { get; private set; } = new();
 
 
     public static ReadCommunicationData Instance { get; private set; } = null;
 
     //=================================================================================| Method
+    private Dialogs datas = null;
 
     private void AnalysisJson() {
 
@@ -74,14 +92,20 @@ public class ReadCommunicationData: MonoBehaviour {
 
             foreach(var situation in speaker.communications) {
 
-                Communication temp = new();
+                List<Script> copyScript = new();
+                foreach(var script in situation.scripts) {
 
-                temp.actors = situation.actors;
-                temp.scripts = situation.scripts;
+                    Script copy = new(script.actor, script.script);
+                    copyScript.Add(copy);
+                }
+
+                Communication temp = new(situation.actors, copyScript);
+
 
                 allDatas[speaker.speaker].Add(situation.situation, temp);
             }
         }
+
     }
 
     public void Analysis() {

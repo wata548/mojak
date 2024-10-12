@@ -8,11 +8,11 @@ public class CommunicationBox : MonoBehaviour
 {
 //=====================================================================================| field
 
-    private ReadCommunicationData.Scripts[] scripts;
-
     public static CommunicationBox Instance { get; private set; } = null;
 
     public bool Printing { get; private set; } = false;
+
+    private bool pressSkip = false;
 //=====================================================================================| method
 
     public void ShowCommunication(TMP_Text scriptBox, float intervalTime, string script, int index = 0) {
@@ -30,8 +30,11 @@ public class CommunicationBox : MonoBehaviour
 
         index++;
 
-        if (!Printing) {
+        if (pressSkip) {
+
             scriptBox.SetText(script);
+            pressSkip = false;
+            Printing = false;
         }
 
         else {
@@ -68,7 +71,8 @@ public class CommunicationBox : MonoBehaviour
 
         if (Printing) {
 
-            Printing = false;
+            pressSkip = true;
+            ;
             return true;
         }
 

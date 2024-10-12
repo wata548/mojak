@@ -10,7 +10,7 @@ public class CustomerProfile {
 
     public static Sprite SetProfile(int nameTag) {
 
-        Sprite speakerProfile = ReadPeopleData.Instance.peopleDatas[actors[nameTag]].profile;
+        Sprite speakerProfile = ReadPeopleData.Instance.peopleDatas[actors[nameTag]].Profile;
 
         return speakerProfile;
     }

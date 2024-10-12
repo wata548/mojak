@@ -5,8 +5,9 @@ public class MovementSkipButton : MonoBehaviour
 //======================================================================================| field
 
     float time = 0;
-    const float INCRESE = 0.01f;
-    const float MULTIPLE = 3500;
+    const float INCRESE = 0.03f;
+    const float MULTIPLE = 1300;
+    Vector2 defaultPosition;
 
     [SerializeField] GameObject target;
 
@@ -43,12 +44,12 @@ public class MovementSkipButton : MonoBehaviour
 
             ShowBox();
 
-            float before = Mathf.Sin(time);
+            float before = Mathf.Cos(time);
 
             time += INCRESE;
             time %= Mathf.PI * 2;
 
-            float current = Mathf.Sin(time);
+            float current = Mathf.Cos(time);
             float deltaY = (current - before) * MULTIPLE * Time.deltaTime;
 
             Vector3 targetPosition = target.transform.position;
@@ -66,13 +67,16 @@ public class MovementSkipButton : MonoBehaviour
     public void RestartMovement() {
 
         time = 0;
+        target.transform.position = defaultPosition;
     }
 
 //======================================================================================| Logic
 
     private void Awake() {
 
+        defaultPosition = target.transform.position;
         SetSingletone();
+
     }
 
     void Update()

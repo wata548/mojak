@@ -27,10 +27,19 @@ public class ReadPeopleData : MonoBehaviour {
 
     public class Person {
 
-        public Sprite profile;
-        public int age;
-        public string[] appearence;
-        public string trait;
+        public Sprite Profile { get; private set; }
+        public int Age { get; private set; }
+        public string[] Appearence { get; private set; }
+        public string Trait { get; private set; }
+
+        public Person(Sprite profile, int age, string[] appearence, string trait) {
+
+            Profile = profile;
+            Age = age;
+            Appearence = appearence;
+            Trait = trait;
+
+        }
     }
 
     private PersonArray people;
@@ -51,12 +60,13 @@ public class ReadPeopleData : MonoBehaviour {
 
         foreach (PersonData personData in people.person) {
 
-            Person temp = new();
 
-            temp.profile = Resources.Load<Sprite>(personData.profile);
-            temp.age = personData.age;
-            temp.appearence = personData.appearence;
-            temp.trait = personData.trait;
+            Sprite profile = Resources.Load<Sprite>(personData.profile);
+            int age = personData.age;
+            string[] appearence = personData.appearence;
+            string trait = personData.trait;
+
+            Person temp = new(profile, age, appearence, trait);
 
             peopleDatas.Add(personData.name, temp);
         }
