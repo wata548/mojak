@@ -5,15 +5,14 @@ using UnityEngine;
 public class SetCustomer 
 {
     
-    static void SetImage(SpriteRenderer sprite, string customer, int state) {
+    public static void SetImage(SpriteRenderer sprite, string customer, int state = 0) {
 
-        Sprite  image           = ReadPeopleData.Instance.peopleDatas[customer].Images[state];
+        Sprite  image = ReadPeopleData.Instance.peopleDatas[customer].Images[state];
 
         sprite.sprite = image;
     }
 
-    static void Disapper(SpriteRenderer sprite) {
+    public static void Disapper(SpriteRenderer sprite) {
         sprite.sprite = null;
-
     }
 }

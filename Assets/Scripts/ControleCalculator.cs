@@ -26,7 +26,7 @@ public class ControleCalculator : MonoBehaviour
     private Vector2 appearPosition = new(650, 225);
     private Vector2 disappearPosition = new(955, 255);
 
-    public ControleCalculator Instance { get; private set; }
+    public static ControleCalculator Instance { get; private set; }
 
 //=======================================================================| Method
 
@@ -88,15 +88,19 @@ public class ControleCalculator : MonoBehaviour
         UpdateNumber();
     }
 
-    public void SubmitNumber() {
+    public long SubmitNumber() {
 
         if (!active) {
 
-            return;
+            return -1;
         }
+
+        long result = number;
 
         ClearNumber();
         UpdateNumber();
+
+        return result;
     }
 
     private void ClearNumber() {
@@ -132,39 +136,20 @@ public class ControleCalculator : MonoBehaviour
     }
 
 
-    private void TurnOff() {
+    public void TurnOff() {
 
         active = false;
         palete.SetActive(false);
 
     }
 
-    private void TurnOn() {
+    public void TurnOn() {
 
         active = true;
         palete.SetActive(true);
 
     }
 
-    IEnumerator AppearMovement(Vector2 startPosition, float increse = 5) {
-
-        const float UI_TRANSFORM = 2.4f;
-
-        yield return new WaitForSeconds(0.08f);
-
-        startPosition.x -= increse;
-
-        palete.transform.position = startPosition * UI_TRANSFORM;
-        
-        if(startPosition.x > appearPosition.x) {
-            StartCoroutine(AppearMovement(startPosition, increse));
-        }
-
-        else {
-            palete.transform.position = appearPosition * UI_TRANSFORM;
-        }
-    }
-    
     private void SetSingleton() {
 
         if (Instance == null) {

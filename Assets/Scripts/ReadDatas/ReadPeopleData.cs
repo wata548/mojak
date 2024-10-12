@@ -17,6 +17,7 @@ public class ReadPeopleData : MonoBehaviour {
         public string   profile = "\0";
         public string[] image;
         public int      age = 0;
+        public string[] buyingItem;
         public string[] appearence;
         public string   trait = "\0";
     }
@@ -32,14 +33,16 @@ public class ReadPeopleData : MonoBehaviour {
         public Sprite   Profile     { get; private set; }
         public Sprite[] Images      { get; private set; }
         public int      Age         { get; private set; }
+        public string[] BuyingItem  { get; private set; }
         public string[] Appearence  { get; private set; }
         public string   Trait       { get; private set; }
 
-        public Person(Sprite profile, Sprite[] image, int age, string[] appearence, string trait) {
+        public Person(Sprite profile, Sprite[] image, int age, string[] buyingItem, string[] appearence, string trait) {
 
             Profile     = profile;
             Images      = image;
             Age         = age;
+            BuyingItem  = buyingItem;
             Appearence  = appearence;
             Trait       = trait;
 
@@ -47,7 +50,9 @@ public class ReadPeopleData : MonoBehaviour {
     }
 
     public class PeopleDatas : Dictionary<String, Person> { }
+    
     public PeopleDatas peopleDatas = new();
+    public List<string> PeopleNameList = new();
 
     public static ReadPeopleData Instance { get; private set; } = null;
 
@@ -67,10 +72,13 @@ public class ReadPeopleData : MonoBehaviour {
             Sprite      profile     = SetProfile(personData);
             Sprite[]    images      = SetPersonImage(personData);
             int         age         = personData.age;
+            string[]    buyingItem  = personData.buyingItem;
             string[]    appearence  = personData.appearence;
             string      trait       = personData.trait;
 
-            Person temp = new(profile, images, age, appearence, trait);
+            PeopleNameList.Add(personData.name);
+
+            Person temp = new(profile, images, age, buyingItem, appearence, trait);
 
             peopleDatas.Add(personData.name, temp);
         }

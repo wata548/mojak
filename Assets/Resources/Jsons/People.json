@@ -9,6 +9,7 @@
         "age" : 0,
         "appearence" : [   
         ],
+        "buyingItem": [],
         "trait" : "편의점에서 일을 한다." 
 
     },
@@ -21,6 +22,13 @@
             "Standing"
         ],
         "age" : 65,
+        "buyingItem" : [
+            "막걸리",
+            "소주",
+            "커피땅콩",
+            "담배",
+            "두부"
+        ],
         "appearence" : [
             "모자", 
             "단소"    
@@ -37,6 +45,12 @@
             "Standing"
         ],
         "age" : 47,
+        "buyingItem": [
+            "하겐다즈",
+            "두바이 초콜릿",
+            "돼지 머리 편육",
+            "와인"
+        ],
         "appearence" : [
             "호피무늬 옷"    
         ],

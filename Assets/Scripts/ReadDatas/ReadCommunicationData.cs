@@ -70,8 +70,6 @@ public class ReadCommunicationData : MonoBehaviour {
     public class AllDialog : Dictionary<string, SituationData> { }
 
     public AllDialog allDatas { get; private set; } = new();
-
-
     public static ReadCommunicationData Instance { get; private set; } = null;
 
     //=================================================================================| Method
@@ -131,25 +129,10 @@ public class ReadCommunicationData : MonoBehaviour {
 
 //==================================================================================| Logic
 
-    //test Code
-    IEnumerator wait() {
-
-        yield return new WaitForSeconds(0.1f);
-
-        ReadCommunicationData.Communication data = allDatas["단소 할아버지"]["firstCommunication"];
-        ControleCommunicationSystem.Instance.SetDialog(data);
-        ControleCommunicationSystem.Instance.StartCommunication();
-    }
-
     private void Awake() {
 
         SetSingleton();
         Analysis();
-
-        //test code start
-        //StartCoroutine(wait());
-
-
     }
 }
 

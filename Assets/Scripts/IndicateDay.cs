@@ -19,7 +19,7 @@ public class IndicateDay : MonoBehaviour {
 
     private void SetSingleton() {
 
-        if(Instance) {
+        if(Instance == null) {
             Instance = this;
         }
     }

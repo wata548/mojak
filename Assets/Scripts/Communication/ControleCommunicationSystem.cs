@@ -33,7 +33,7 @@ public class ControleCommunicationSystem : MonoBehaviour
         }
     }
 
-    public void SetDialog(ReadCommunicationData.Communication data) {
+    private void SetDialog(ReadCommunicationData.Communication data) {
 
         CustomerProfile.GetActors(data.Actors);
         scriptData = data.Scripts;
@@ -42,7 +42,7 @@ public class ControleCommunicationSystem : MonoBehaviour
         TurnOn();
     }
 
-    public void StartCommunication() {
+    private void StartCommunication() {
 
         if(!Active || currentIndex == ALREADY_READ) {
             TurnOff();
@@ -70,6 +70,15 @@ public class ControleCommunicationSystem : MonoBehaviour
             StartCommunication();
         }
     }
+
+    public void StartCommunication(string person, string situation) {
+
+        ReadCommunicationData.Communication data = ReadCommunicationData.Instance.allDatas[person][situation];
+        SetDialog(data);
+
+        StartCommunication();
+    }
+
 
     public void TurnOn() {
 
