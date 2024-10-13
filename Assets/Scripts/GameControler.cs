@@ -22,60 +22,62 @@ public class GameControler : MonoBehaviour {
         return person;
     }
 
-    IEnumerator waitForEndCommunication() {
+    IEnumerator waitUntilCommunicationEnd(string person, string situation) {
 
+        ControleCommunicationSystem.Instance.StartCommunication(person, situation);
         yield return new WaitUntil(() => !ControleCommunicationSystem.Instance.Active);
 
         ControleCalculator.Instance.TurnOn();
 
         int buyPillCount = Random.Range(0, 3) + 1;
-        StartCoroutine(IndicatePrice(buyPillCount));
-    }
+        StartCoroutine(PriceAppear(buyPillCount));
 
-    IEnumerator IndicatePrice(int pillCount, int index = 0) {
+        IEnumerator PriceAppear(int pillCount, int index = 0) {
 
-        ShowPrice = true;
+            ShowPrice = true;
 
-        string pill = SetRandomPill();
-        int countBuyingPill = Random.Range(0, PURCHASING_PILL_RANGE) + 1;
-        int pillPrice = ReadItemsData.Instance.itemData[pill].Price;
+            string pill = SetRandomPill();
+            int countBuyingPill = Random.Range(0, PURCHASING_PILL_RANGE) + 1;
+            int pillPrice = ReadItemsData.Instance.itemData[pill].Price;
 
-        sumPrice += pillPrice * countBuyingPill;
-
-        yield return new WaitUntil(() => !global::IndicatePrice.Instance.Active);
-        yield return new WaitForSeconds(PRICE_DELAY / 2);
-        SetPill.SetImage(this.pill, pill);
-        yield return new WaitForSeconds(PRICE_DELAY / 2);
-
-       
-
-        global::IndicatePrice.Instance.AppearAndDisappear($"{pill} {pillPrice}원 {countBuyingPill}개");
-
-        index++;
-        if (index < pillCount) {
-            StartCoroutine(IndicatePrice(pillCount, index)); 
-        }
-
-        else {
+            sumPrice += pillPrice * countBuyingPill;
 
             yield return new WaitUntil(() => !global::IndicatePrice.Instance.Active);
-            yield return new WaitForSeconds(PRICE_DELAY);
-            ControleCommunicationSystem.Instance.StartCommunication(person, "endOrder");
-            yield return new WaitUntil(() => !ControleCommunicationSystem.Instance.Active);
-            ShowPrice = false;
+            yield return new WaitForSeconds(PRICE_DELAY / 2);
+            SetPill.SetImage(this.pill, pill);
+            yield return new WaitForSeconds(PRICE_DELAY / 2);
+
+
+
+            IndicatePrice.Instance.AppearAndDisappear($"{pill} {pillPrice}원 {countBuyingPill}개");
+
+            index++;
+            if (index < pillCount) {
+                StartCoroutine(PriceAppear(pillCount, index));
+            }
+
+            else {
+
+                yield return new WaitUntil(() => !global::IndicatePrice.Instance.Active);
+                yield return new WaitForSeconds(PRICE_DELAY);
+                ControleCommunicationSystem.Instance.StartCommunication(person, "endOrder");
+                yield return new WaitUntil(() => !ControleCommunicationSystem.Instance.Active);
+                ShowPrice = false;
+
+            }
+
+            string SetRandomPill() {
+                int countPill = ReadPeopleData.Instance.peopleDatas[person].BuyingItem.Length;
+                int randomIndex = Random.Range(0, countPill);
+                string pill = ReadPeopleData.Instance.peopleDatas[person].BuyingItem[randomIndex];
+
+                return pill;
+            }
 
         }
+    }    
 
-        string SetRandomPill() {
-            int countPill = ReadPeopleData.Instance.peopleDatas[person].BuyingItem.Length;
-            int randomIndex = Random.Range(0, countPill);
-            string pill = ReadPeopleData.Instance.peopleDatas[person].BuyingItem[randomIndex];
-
-            return pill;
-        }
-
-}
-void Start()
+    void Start()
     {
         IndicateDay.Instance.SetDay(day);
 
@@ -83,9 +85,7 @@ void Start()
 
         SetCustomer.SetImage(customer, person);
 
-        ControleCommunicationSystem.Instance.StartCommunication(person, "firstCommunication");
-
-        StartCoroutine(waitForEndCommunication());
+        StartCoroutine(waitUntilCommunicationEnd(person, "firstCommunication"));
     }
 
 }
