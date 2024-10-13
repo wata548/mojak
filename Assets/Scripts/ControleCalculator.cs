@@ -15,8 +15,8 @@ public class ControleCalculator : MonoBehaviour
     [SerializeField] TMP_Text   showNumber;
     [SerializeField] GameObject errorBox;
 
-    private const float   horizonInterval   = 63;
-    private const float   verticalInterval  = 76;
+    private const float   horizonInterval   = 0.57f;
+    private const float   verticalInterval  = 0.7f;
     private const long    maximumRange      = 100000000000;
     private const KeyCode ERASE_KEY         = KeyCode.Backspace;
     private const KeyCode SUBMIT_KEY        = KeyCode.Return;
@@ -25,8 +25,8 @@ public class ControleCalculator : MonoBehaviour
     private bool active = false;
     private bool showError = false;
 
-    private Vector2 appearPosition = new(650, 225);
-    private Vector2 disappearPosition = new(955, 255);
+    /*private Vector2 appearPosition = new(650, 225);
+    private Vector2 disappearPosition = new(955, 255);*/
 
     public static ControleCalculator Instance { get; private set; }
 

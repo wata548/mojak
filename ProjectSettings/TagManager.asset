@@ -38,6 +38,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Calculator
+    uniqueID: 3621419323
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
