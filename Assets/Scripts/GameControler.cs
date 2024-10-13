@@ -1,56 +1,75 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static ReadPeopleData;
 
 public class GameControler : MonoBehaviour {
     [SerializeField] SpriteRenderer pill;
     [SerializeField] SpriteRenderer customer;
 
-    static int day = 1;
-    static string person;
-    public int sumPrice = 0;
-    public static bool ShowPrice { get; private set; } = false;
+    [SerializeField]int day = 1;
+    [SerializeField]int thisDaysVisitor = 0;
+    [SerializeField]string person;
+    [SerializeField]long sumPrice = 0;
+    public bool ShowPrice { get; private set; } = false;
 
+    public static GameControler Instance { get; private set; } = null;
+
+    const float NEW_VISITOR_DELAY = 1;
+    const int LIMIT_DAY_VISITOR = 3;
+    const int LIMIT_SUM_DAY = 3;
     const float PRICE_DELAY = 1f;
     const int PURCHASING_PILL_RANGE = 3;
 
     string SelectRandomPerson() {
-        int personIndex = Random.Range(0, ReadPeopleData.Instance.PeopleNameList.Count - 1) + 1;
+        int personIndex = UnityEngine.Random.Range(0, ReadPeopleData.Instance.PeopleNameList.Count - 1) + 1;
         string person = ReadPeopleData.Instance.PeopleNameList[personIndex];
 
         return person;
     }
 
-    IEnumerator waitUntilCommunicationEnd(string person, string situation) {
+    IEnumerator WaitCommunication(string person, string situation, Action action, float delay = 0) {
 
         ControleCommunicationSystem.Instance.StartCommunication(person, situation);
         yield return new WaitUntil(() => !ControleCommunicationSystem.Instance.Active);
+        yield return new WaitForSeconds(delay);
 
+        action?.Invoke();
+    }
+
+    void HelloAndShowPrice() {
+
+        StartCoroutine(WaitCommunication(person, "firstCommunication", () => ShowPriceAction()));
+    }    
+
+    void ShowPriceAction() {
+        
         ControleCalculator.Instance.TurnOn();
 
-        int buyPillCount = Random.Range(0, 3) + 1;
+        int buyPillCount = UnityEngine.Random.Range(0, 3) + 1;
         StartCoroutine(PriceAppear(buyPillCount));
 
         IEnumerator PriceAppear(int pillCount, int index = 0) {
 
             ShowPrice = true;
 
+            //set pill info
             string pill = SetRandomPill();
-            int countBuyingPill = Random.Range(0, PURCHASING_PILL_RANGE) + 1;
+            int countBuyingPill = UnityEngine.Random.Range(0, PURCHASING_PILL_RANGE) + 1;
             int pillPrice = ReadItemsData.Instance.itemData[pill].Price;
 
             sumPrice += pillPrice * countBuyingPill;
 
-            yield return new WaitUntil(() => !global::IndicatePrice.Instance.Active);
+            //wait untill disappear price and process set pill image
+            yield return new WaitUntil(() => !IndicatePrice.Instance.Active);
             yield return new WaitForSeconds(PRICE_DELAY / 2);
             SetPill.SetImage(this.pill, pill);
             yield return new WaitForSeconds(PRICE_DELAY / 2);
 
-
-
+            //show price
             IndicatePrice.Instance.AppearAndDisappear($"{pill} {pillPrice}¿ø {countBuyingPill}°³");
 
+            //control how many price are shown
             index++;
             if (index < pillCount) {
                 StartCoroutine(PriceAppear(pillCount, index));
@@ -58,34 +77,78 @@ public class GameControler : MonoBehaviour {
 
             else {
 
-                yield return new WaitUntil(() => !global::IndicatePrice.Instance.Active);
+                //process when Showing price end
+                yield return new WaitUntil(() => !IndicatePrice.Instance.Active);
                 yield return new WaitForSeconds(PRICE_DELAY);
-                ControleCommunicationSystem.Instance.StartCommunication(person, "endOrder");
-                yield return new WaitUntil(() => !ControleCommunicationSystem.Instance.Active);
-                ShowPrice = false;
 
+                StartCoroutine(WaitCommunication(person, "endOrder", () => ShowPrice = false));
             }
 
             string SetRandomPill() {
                 int countPill = ReadPeopleData.Instance.peopleDatas[person].BuyingItem.Length;
-                int randomIndex = Random.Range(0, countPill);
+                int randomIndex = UnityEngine.Random.Range(0, countPill);
                 string pill = ReadPeopleData.Instance.peopleDatas[person].BuyingItem[randomIndex];
 
                 return pill;
             }
 
         }
-    }    
+    }
 
-    void Start()
-    {
-        IndicateDay.Instance.SetDay(day);
+    public void EventSubmitPrice(long expectPrice) {
 
+        if(expectPrice == sumPrice) {
+
+            if(thisDaysVisitor >= LIMIT_DAY_VISITOR) {
+                
+                if(day == LIMIT_SUM_DAY) {
+                    StartCoroutine(WaitCommunication(person, "correctAnswer", null));
+                    return;
+                }
+
+                day++;
+                IndicateDay.Instance.SetDay(day);
+                thisDaysVisitor = 0;
+            }
+
+            StartCoroutine(WaitCommunication(person, "correctAnswer", () => NewVisitor(), NEW_VISITOR_DELAY));
+        }
+
+        else {
+
+            StartCoroutine(WaitCommunication(person, "wrongAnswer", () => NewVisitor(), NEW_VISITOR_DELAY));
+
+        }
+    }
+
+    private void NewVisitor() {
+
+        sumPrice = 0;
+        thisDaysVisitor++;
         person = SelectRandomPerson();
 
         SetCustomer.SetImage(customer, person);
 
-        StartCoroutine(waitUntilCommunicationEnd(person, "firstCommunication"));
+        HelloAndShowPrice();
+    }
+
+    private void SetSingleton() {
+        if(Instance == null) {
+            Instance = this;
+        }
+    }
+
+    void Start()
+    {
+        day = 1;
+        thisDaysVisitor = 0;
+        IndicateDay.Instance.SetDay(day);
+
+        NewVisitor();
+    }
+
+    private void Awake() {
+        SetSingleton();
     }
 
 }

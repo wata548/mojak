@@ -27,13 +27,19 @@
 
             {
                 "situation": "wrongAnswer",
+                "actors" : ["단소 할아버지"],
+                "scripts" : [
+                    {"actor": 0, "script":"가격이 틀렸잖아"}
+                ]
+
+            },
+
+            {
+                "situation": "correctAnswer",
                 "actors" : ["단소 할아버지", "주인공"],
                 "scripts" : [
-                    {"actor": 0, "script":"안녕하345세요?"},
-                    {"actor": 1, "script":"안녕하234세요!"},
-                    {"actor": 0, "script":"241"},
-                    {"actor": 1, "script":"2342"}
-                    
+                    {"actor": 0, "script":"여기, 돈"},
+                    {"actor": 1, "script":"감사합니다!"}
                 ]
 
             }
@@ -70,13 +76,18 @@
 
             {
                 "situation": "wrongAnswer",
-                "actors" : ["부자 아줌마", "주인공", "단소 할아버지"],
+                "actors" : ["부자 아줌마"],
                 "scripts" : [
-                    {"actor": 0, "script":"!녕하세요?"},
-                    {"actor": 1, "script":"안녕하세!요!"},
-                    {"actor": 2, "script":"1!"},
-                    {"actor": 1, "script":"2!"}
-                    
+                    {"actor": 0, "script":"ㅗ 틀림"}                    
+                ]
+
+            },
+
+            {
+                "situation": "correctAnswer",
+                "actors" : ["부자 아줌마"],
+                "scripts" : [
+                    {"actor": 0, "script":"돈 냄 ㅂㅇ"}                    
                 ]
 
             }

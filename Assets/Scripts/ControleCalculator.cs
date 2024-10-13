@@ -17,7 +17,7 @@ public class ControleCalculator : MonoBehaviour
 
     private const float   horizonInterval   = 63;
     private const float   verticalInterval  = 76;
-    private const long    maximumRange      = 1000000000;
+    private const long    maximumRange      = 100000000000;
     private const KeyCode ERASE_KEY         = KeyCode.Backspace;
     private const KeyCode SUBMIT_KEY        = KeyCode.Return;
 
@@ -66,7 +66,7 @@ public class ControleCalculator : MonoBehaviour
     }
 
 
-    public void ClickButton(int userInput) {
+    public void ClickButton(long userInput) {
 
         bool outRange = number >= maximumRange;
 
@@ -100,9 +100,9 @@ public class ControleCalculator : MonoBehaviour
 
     public void SubmitNumber() {
 
-        if(showError) return;
+        if(!active || showError) return;
 
-        if (!active || GameControler.ShowPrice) {
+        if (GameControler.Instance.ShowPrice) {
 
             showError = true;
             errorBox.SetActive(true);
@@ -111,7 +111,7 @@ public class ControleCalculator : MonoBehaviour
             return;
         }
 
-        long result = number;
+        GameControler.Instance.EventSubmitPrice(number);
 
         ClearNumber();
         UpdateNumber();
@@ -166,7 +166,7 @@ public class ControleCalculator : MonoBehaviour
         palete.SetActive(true);
         UpdateNumber();
     }
-
+        
     private void SetSingleton() {
 
         if (Instance == null) {
