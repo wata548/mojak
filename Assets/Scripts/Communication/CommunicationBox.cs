@@ -68,7 +68,7 @@ public class CommunicationBox : MonoBehaviour
     }
 
     public bool SkipCommunication() {
-
+         
         if (Printing) {
 
             pressSkip = true;

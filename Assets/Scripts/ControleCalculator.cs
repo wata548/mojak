@@ -12,7 +12,8 @@ public class ControleCalculator : MonoBehaviour
     [SerializeField] GameObject palete;
     [SerializeField] GameObject calculateKeyPrefab;
     [SerializeField] GameObject keyFolder;
-    [SerializeField] TMP_Text   ShowNumber;
+    [SerializeField] TMP_Text   showNumber;
+    [SerializeField] GameObject errorBox;
 
     private const float   horizonInterval   = 63;
     private const float   verticalInterval  = 76;
@@ -22,6 +23,7 @@ public class ControleCalculator : MonoBehaviour
 
     private long number = 0;
     private bool active = false;
+    private bool showError = false;
 
     private Vector2 appearPosition = new(650, 225);
     private Vector2 disappearPosition = new(955, 255);
@@ -88,11 +90,25 @@ public class ControleCalculator : MonoBehaviour
         UpdateNumber();
     }
 
-    public long SubmitNumber() {
+    IEnumerator disappearErrorMessage() {
 
-        if (!active) {
+        yield return new WaitForSeconds(1f);
 
-            return -1;
+        errorBox.SetActive(false);
+        showError = false;
+    }
+
+    public void SubmitNumber() {
+
+        if(showError) return;
+
+        if (!active || GameControler.ShowPrice) {
+
+            showError = true;
+            errorBox.SetActive(true);
+            StartCoroutine(disappearErrorMessage());
+
+            return;
         }
 
         long result = number;
@@ -100,17 +116,18 @@ public class ControleCalculator : MonoBehaviour
         ClearNumber();
         UpdateNumber();
 
-        return result;
+        TurnOff();
     }
 
-    private void ClearNumber() {
+    public void ClearNumber() {
 
         number = 0;
+        UpdateNumber();
     }
 
     private void UpdateNumber() {
 
-        ShowNumber.SetText(number.ToString());
+        showNumber.SetText(number.ToString());
     }
 
     private void ClickKeyboard() {
@@ -147,7 +164,7 @@ public class ControleCalculator : MonoBehaviour
 
         active = true;
         palete.SetActive(true);
-
+        UpdateNumber();
     }
 
     private void SetSingleton() {

@@ -17,6 +17,15 @@
             },
 
             {
+                "situation": "endOrder",
+                "actors": ["단소 할아버지"],
+                "scripts":[
+                    {"actor": 0, "script": "여기까지"}
+                ]
+
+            },
+
+            {
                 "situation": "wrongAnswer",
                 "actors" : ["단소 할아버지", "주인공"],
                 "scripts" : [
@@ -46,6 +55,15 @@
                     {"actor": 1, "script":"원하시는 물건을 순서대로 올려주세요"},
                     {"actor": 0, "script":"ㅇ"}
                     
+                ]
+
+            },
+
+            {
+                "situation": "endOrder",
+                "actors": ["부자 아줌마"],
+                "scripts":[
+                    {"actor": 0, "script": "이것까지 결제해 줘"}
                 ]
 
             },

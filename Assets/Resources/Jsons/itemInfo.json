@@ -1,19 +1,55 @@
 [
     {
-        "item": "물",
-        "price": 500,
+        "item": "막걸리",
+        "price": 2600,
         "image": "Items/water"
     },
 
     {
-        "item": "단소",
-        "price": 3500,
+        "item": "소주",
+        "price": 2400,
         "image": "Items/DanSo"
     },
 
     {
-        "item": "삼각 김밥",
-        "price": 1700,
+        "item": "커피땅콩",
+        "price": 2500,
         "image": "Items/triangleRice"
+    },
+
+    {
+        "item": "담배",
+        "price": 5000,
+        "image": "Items/water"
+    },
+
+    {
+        "item": "두부",
+        "price": 1700,
+        "image": "Items/DanSo"
+    },
+
+    {
+        "item": "하겐다즈",
+        "price": 15000,
+        "image": "Items/triangleRice"
+    },
+
+    {
+        "item": "두바이 초콜릿",
+        "price": 4000,
+        "image": "Items/triangleRice"
+    },
+
+    {
+        "item": "돼지 머리 편육",
+        "price": 12500,
+        "image": "Items/water"
+    },
+
+    {
+        "item": "와인",
+        "price": 26000,
+        "image": "Items/DanSo"
     }
 ]

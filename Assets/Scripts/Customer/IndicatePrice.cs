@@ -17,18 +17,21 @@ public class IndicatePrice : MonoBehaviour
     [SerializeField] Image priceBox;
     [SerializeField] TMP_Text price;
 
+    public bool Active { get; private set; } = false;
     public static IndicatePrice Instance { get; private set; } = null;
 
 //====================================================================================| Method
 
     private void SetSingleton() {
 
-        if(Instance = null) {
+        if(Instance == null) {
             Instance = this;
         }
     }
 
     private IEnumerator AppearPrice(Image priceBox, TMP_Text price, float targetTime, bool type = true, float index = 0) {
+
+        Active = true;
 
         yield return new WaitForSeconds(targetTime / REPEAT_COUNT);
 
@@ -48,6 +51,10 @@ public class IndicatePrice : MonoBehaviour
             yield return new WaitForSeconds(APPEAR_TIME - 2 * CHANGE_TIME);
 
             StartCoroutine(AppearPrice(priceBox, price, targetTime, !type, 0));
+        }
+
+        else {
+            Active = false;
         }
 
         Color AppearColor(Color color, bool type) {
