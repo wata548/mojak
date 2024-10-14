@@ -4,22 +4,26 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameControler : MonoBehaviour {
-    [SerializeField] SpriteRenderer pill;
-    [SerializeField] SpriteRenderer customer;
 
-    [SerializeField]int day = 1;
-    [SerializeField]int thisDaysVisitor = 0;
-    [SerializeField]string person;
-    [SerializeField]long sumPrice = 0;
+//===============================================================================================| Field
+    private SpriteRenderer pill;
+    private SpriteRenderer customer;
+
+    private int day = 1;
+    private int thisDaysVisitor = 0;
+    private string person;
+    private long sumPrice = 0;
     public bool ShowPrice { get; private set; } = false;
-
-    public static GameControler Instance { get; private set; } = null;
 
     const float NEW_VISITOR_DELAY = 1;
     const int LIMIT_DAY_VISITOR = 3;
     const int LIMIT_SUM_DAY = 3;
     const float PRICE_DELAY = 1f;
     const int PURCHASING_PILL_RANGE = 3;
+
+    public static GameControler Instance { get; private set; } = null;
+
+//===============================================================================================| Method
 
     string SelectRandomPerson() {
         int personIndex = UnityEngine.Random.Range(0, ReadPeopleData.Instance.PeopleNameList.Count - 1) + 1;
@@ -28,11 +32,10 @@ public class GameControler : MonoBehaviour {
         return person;
     }
 
-    IEnumerator WaitCommunication(string person, string situation, Action action, float delay = 0) {
+    IEnumerator WaitCommunication(string person, string situation, Action action) {
 
         ControleCommunicationSystem.Instance.StartCommunication(person, situation);
         yield return new WaitUntil(() => !ControleCommunicationSystem.Instance.Active);
-        yield return new WaitForSeconds(delay);
 
         action?.Invoke();
     }
@@ -111,13 +114,24 @@ public class GameControler : MonoBehaviour {
                 thisDaysVisitor = 0;
             }
 
-            StartCoroutine(WaitCommunication(person, "correctAnswer", () => NewVisitor(), NEW_VISITOR_DELAY));
+            StartCoroutine(WaitCommunication(person, "correctAnswer", () => GiveDelayAndNewVisitor(NEW_VISITOR_DELAY)));
         }
 
         else {
 
-            StartCoroutine(WaitCommunication(person, "wrongAnswer", () => NewVisitor(), NEW_VISITOR_DELAY));
+            StartCoroutine(WaitCommunication(person, "wrongAnswer", () => GiveDelayAndNewVisitor(NEW_VISITOR_DELAY)));
 
+        }
+    }
+
+    private void GiveDelayAndNewVisitor(float delay) {
+
+        SetCustomer.Disapper(customer);
+
+        StartCoroutine(Delay(delay,NewVisitor));
+        IEnumerator Delay(float delay, Action action) {
+            yield return new WaitForSeconds(delay);
+            action?.Invoke();
         }
     }
 
@@ -137,6 +151,8 @@ public class GameControler : MonoBehaviour {
             Instance = this;
         }
     }
+
+//===============================================================================================| Logic
 
     void Start()
     {
