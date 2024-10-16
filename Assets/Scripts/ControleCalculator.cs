@@ -15,8 +15,8 @@ public class ControleCalculator : MonoBehaviour
     [SerializeField] TMP_Text   showNumber;
     [SerializeField] GameObject errorBox;
 
-    private const float   horizonInterval   = 0.57f;
-    private const float   verticalInterval  = 0.7f;
+    private const float   horizonInterval   = 1.4f;
+    private const float   verticalInterval  = 1.4f;
     private const long    maximumRange      = 100000000000;
     private const KeyCode ERASE_KEY         = KeyCode.Backspace;
     private const KeyCode SUBMIT_KEY        = KeyCode.Return;

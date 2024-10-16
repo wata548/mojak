@@ -6,13 +6,13 @@ using UnityEngine;
 public class GameControler : MonoBehaviour {
 
 //===============================================================================================| Field
-    private SpriteRenderer pill;
-    private SpriteRenderer customer;
+    [SerializeField] SpriteRenderer pill;
+    [SerializeField] SpriteRenderer customer;
 
     private int day = 1;
     private int thisDaysVisitor = 0;
     private string person;
-    private long sumPrice = 0;
+    public long sumPrice = 0;
     public bool ShowPrice { get; private set; } = false;
 
     const float NEW_VISITOR_DELAY = 1;
@@ -140,7 +140,6 @@ public class GameControler : MonoBehaviour {
         sumPrice = 0;
         thisDaysVisitor++;
         person = SelectRandomPerson();
-
         SetCustomer.SetImage(customer, person);
 
         HelloAndShowPrice();

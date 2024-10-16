@@ -1497,9 +1497,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pill: {fileID: 241380569}
   customer: {fileID: 939158311}
-  day: 1
-  thisDaysVisitor: 0
-  person: 
   sumPrice: 0
 --- !u!4 &966028224
 Transform:
@@ -2471,7 +2468,6 @@ Transform:
   - {fileID: 555098505}
   - {fileID: 486883484}
   - {fileID: 1687043711}
-  - {fileID: 1951454946}
   - {fileID: 1219265723}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3058,7 +3054,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1205195436}
-  m_Father: {fileID: 1568722108}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3308,4 +3304,5 @@ SceneRoots:
   - {fileID: 1881178288}
   - {fileID: 332856009}
   - {fileID: 966028224}
+  - {fileID: 1951454946}
   - {fileID: 1568722108}
