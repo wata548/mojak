@@ -57,9 +57,9 @@
                 "actors" : ["부자 아줌마", "주인공"],
                 "scripts" : [
                     {"actor": 1, "script":"안녕하세요?"},
-                    {"actor": 0, "script":"ㅇ"},
+                    {"actor": 0, "script":"어"},
                     {"actor": 1, "script":"원하시는 물건을 순서대로 올려주세요"},
-                    {"actor": 0, "script":"ㅇ"}
+                    {"actor": 0, "script":"응"}
                     
                 ]
 
@@ -78,7 +78,7 @@
                 "situation": "wrongAnswer",
                 "actors" : ["부자 아줌마"],
                 "scripts" : [
-                    {"actor": 0, "script":"ㅗ 틀림"}                    
+                    {"actor": 0, "script":"틀렸잖아"}                    
                 ]
 
             },
@@ -87,7 +87,7 @@
                 "situation": "correctAnswer",
                 "actors" : ["부자 아줌마"],
                 "scripts" : [
-                    {"actor": 0, "script":"돈 냄 ㅂㅇ"}                    
+                    {"actor": 0, "script":"받아"}                    
                 ]
 
             }

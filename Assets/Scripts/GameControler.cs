@@ -106,6 +106,7 @@ public class GameControler : MonoBehaviour {
                 
                 if(day == LIMIT_SUM_DAY) {
                     StartCoroutine(WaitCommunication(person, "correctAnswer", null));
+                    Debug.Log("ENDING");
                     return;
                 }
 

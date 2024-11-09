@@ -8,6 +8,7 @@ public class ControleCommunicationSystem : MonoBehaviour
 //==================================================================| field
 
     [SerializeField] UnityEngine.UI.Image profile;
+    [SerializeField] TMP_Text             talkerName;
     [SerializeField] TMP_Text             scriptIndicate;
     [SerializeField] GameObject           palete;
 
@@ -22,7 +23,9 @@ public class ControleCommunicationSystem : MonoBehaviour
 
     public static ControleCommunicationSystem Instance { get; private set; } = null;
 
-//==================================================================| Method
+    string[] actors;
+
+    //==================================================================| Method
 
 
     private void SetSingleton() {
@@ -35,7 +38,7 @@ public class ControleCommunicationSystem : MonoBehaviour
 
     private void SetDialog(ReadCommunicationData.Communication data) {
 
-        CustomerProfile.GetActors(data.Actors);
+        actors = data.Actors;
         scriptData = data.Scripts;
         currentIndex = 0;
 
@@ -52,7 +55,10 @@ public class ControleCommunicationSystem : MonoBehaviour
         MovementSkipButton.Instance.RestartMovement();
 
         CommunicationBox.Instance.ShowCommunication(scriptIndicate, PRINTING_INTERVAL, scriptData[currentIndex].SingleScript);
-        CustomerProfile.SetProfile(profile, scriptData[currentIndex].Actor);
+
+        string talker = actors[scriptData[currentIndex].Actor];
+        CustomerProfile.SetProfile(profile, talker);
+        talkerName.text = talker;
 
         currentIndex++;
 

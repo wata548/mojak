@@ -6,17 +6,10 @@ using UnityEngine;
 
 public class CustomerProfile {
 
-    private static string[] actors;
+    public static void SetProfile(UnityEngine.UI.Image sprite, string actor) {
 
-    public static void SetProfile(UnityEngine.UI.Image sprite, int nameTag) {
-
-        Sprite speakerProfile = ReadPeopleData.Instance.peopleDatas[actors[nameTag]].Profile;
+        Sprite speakerProfile = ReadPeopleData.Instance.peopleDatas[actor].Profile;
 
         sprite.sprite = speakerProfile;
-    }
-
-    public static void GetActors(string[] actors) {
-
-        CustomerProfile.actors = actors;
     }
 }
