@@ -1,5 +1,4 @@
-[
-    {
+[ {
         "name": "주인공",
         "defaultImagePath": "Person/Player/",
         "profile": "Profile",
@@ -22,18 +21,80 @@
             "Standing"
         ],
         "age" : 65,
-        "buyingItem" : [
-            "막걸리",
-            "소주",
-            "커피땅콩",
-            "담배",
-            "두부"
+        
+        "buyingItem1" : [
+            {
+                "name": "막걸리",
+                "number": 2
+            },
+            {
+                "name": "소주",
+                "number": 1
+            },
+            {
+                "name": "커피땅콩",
+                "number": 2
+            },
+            {
+                "name": "담배",
+                "number": 1
+            },
+            {
+                "name": "풀무원두부",
+                "number": 1
+            }
         ],
+        "buyingItem2" : [
+           
+            {
+                "name": "먹태깡깡",
+                "number": 1
+            },
+            {
+                "name": "6포",
+                "number": 1
+            },
+            {
+                "name": "라이터",
+                "number": 1
+            },
+            {
+                "name": "담배",
+                "number": 1
+            },
+            {
+                "name": "소주",
+                "number": 2
+            }
+        ],
+        "buyingItem3" : [
+            
+            {
+                "name": "에너지 음료",
+                "number": 2
+            },
+            {
+                "name": "면도기",
+                "number": 1
+            },
+            {
+                "name": "숙취해소제",
+                "number": 2
+            },
+            {
+                "name": "소주",
+                "number": 8
+            },
+            {
+                "name": "핫바",
+                "number": 8
+            }
+        ],
+        
         "appearence" : [
             "모자", 
             "단소"    
-        ],
-        "trait" : "단소를 이용해 사람을 괴롭힌다." 
+        ]
 
     },
 
@@ -45,15 +106,137 @@
             "Standing"
         ],
         "age" : 47,
-        "buyingItem": [
-            "하겐다즈",
-            "두바이 초콜릿",
-            "돼지 머리 편육",
-            "와인"
+        
+        "buyingItem1": [
+            
+            {
+                "name": "하겐다즈",
+                "number": 3
+            },
+            {
+                "name": "두바이 초콜릿",
+                "number": 2
+            },
+            {
+                "name": "돼지 머리 편육",
+                "number": 2
+            },
+            {
+                "name": "와인",
+                "number": 2
+            }
         ],
+        "buyingItem2" : [
+            {
+                "name": "함께 더 아이스크림",
+                "number": 4
+            },
+            {
+                "name": "기프트 카드",
+                "number": 50
+            },
+            {
+                "name": "리락쿠마",
+                "number": 1
+            },
+            {
+                "name": "우산",
+                "number": 1
+            }
+        ],
+        "buyingItem3": [
+            {
+                "name": "보조배터리",
+                "number": 1
+            },
+            {
+                "name": "이어폰",
+                "number": 1
+            },
+            {
+                "name": "로얄카드",
+                "number": 2
+            },
+            {
+                "name": "충전기",
+                "number": 1
+            }
+        ],
+        
         "appearence" : [
             "호피무늬 옷"    
+        ]
+    },
+
+    {
+        "name": "초딩",
+        "defaultImagePath" : "Person/Choding/",
+        "profile": "Profile",
+        "image" : [
+            "Standing"
         ],
-        "trait" : "많은 물건을 구매한다."
+        "age" : 12,
+        
+        "buyingItem1": [
+            
+            {
+                "name": "포타이토칩",
+                "number": 2
+            },
+            {
+                "name": "나의구미젤리",
+                "number": 3
+            },
+            {
+                "name": "츄팝츄",
+                "number": 3
+            },
+            {
+                "name": "아침엔 포도 주스",
+                "number": 6
+            }
+        ],
+        "buyingItem2": [
+            {
+                "name": "코가 콜라",
+                "number": 2
+                
+            },
+            {
+                "name": "핫바",
+                "number": 2
+            },
+            {
+                "name": "칠계장",
+                "number": 6
+            },
+            {
+                "name": "냉동탕탕후루후루",
+                "number": 1
+            }
+        ],
+        "buyingItem3": [
+             {
+                "name": "미니돼지바",
+                "number": 12
+             },
+             {
+                "name": "나가 초콜릿",
+                "number": 6
+             },
+             {
+                "name": "연세대가고 싶빵",
+                "number": 6
+             },
+             {
+                "name":"왈치스",
+                "number": 2
+             }
+
+        ],
+        
+        "appearence": [
+            "빵빵한 볼"
+        ]
     }
 ]

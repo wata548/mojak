@@ -70,7 +70,7 @@ public class GameControler : MonoBehaviour {
             yield return new WaitForSeconds(PRICE_DELAY / 2);
 
             //show price
-            IndicatePrice.Instance.AppearAndDisappear($"{pill} {pillPrice}¿ø {countBuyingPill}°³");
+            IndicatePrice.Instance.AppearAndDisappear($"{pill} {pillPrice}Â¿Ã¸ {countBuyingPill}Â°Â³");
 
             //control how many price are shown
             index++;
