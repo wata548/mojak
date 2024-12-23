@@ -92,11 +92,15 @@ public class CommunicationBox : MonoBehaviour
     private void Awake() {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         //
 =======
 >>>>>>> origin/main
         /*
         */
+=======
+        //?
+>>>>>>> test
         SetSingleton();
     }
 }
