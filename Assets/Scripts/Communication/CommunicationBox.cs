@@ -92,6 +92,8 @@ public class CommunicationBox : MonoBehaviour
     private void Awake() {
 
         //
+        /*
+        */
         SetSingleton();
     }
 }
